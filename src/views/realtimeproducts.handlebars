@@ -1,0 +1,24 @@
+<h1>Real Time List</h1>
+
+<div id="productList">
+    {{#each products}}
+        <div>
+            <h3>{{this._id}} - {{this.desc}}</h3>
+            <button onclick="deleteProduct('{{this._id}}')">delete</button>
+        </div>
+    {{/each}}
+</div>
+<br>
+
+
+<form action="" id="product">
+    <h3>Form</h3>
+
+    <input type="text" id="productdesc" placeholder="Description">
+    <button id="createproductbtn">Create</button>
+</form>
+<br><br>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtime.js"></script>
