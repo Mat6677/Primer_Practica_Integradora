@@ -44,9 +44,15 @@ app.use((req, res, next) => {
 io.on("connection", async (socket) => {
   console.log("socket connected");
 
-  socket.on("newProduct", async (productDesc) => {
-    await productManager.addProduct(productDesc);
-    const products = productManager.getProducts();
+  socket.on("newProduct", async (product) => {
+    console.log(product);
+    try {
+      await productManager.addProduct(product);
+    } catch (error) {
+      console.log(error)
+      io.emit("errorOnSubmit")
+    }
+    const products = await productManager.getProducts();
     io.emit("listUpdated", { products });
   });
 

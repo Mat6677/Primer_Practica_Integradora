@@ -3,8 +3,11 @@
 <div>
     {{#each products}}
         <div>
-            <h3>{{this._id}}</h3>
-            <p>{{this.desc}}</p>
+            <h3>{{this._id}} - {{this.title}}</h3>
+            <p>{{this.description}}</p>
+            <span>${{this.price}} - Stock: {{this.stock}}</span>
+            <img src={{this.thumbnail}} alt="">
+            <p>Code: {{this.code}}</p>
         </div>
     {{/each}}
 
